@@ -19,7 +19,6 @@ public class Solution {
         for (Course course : courses) {
             List<Student> students = course.getStudents();
             students.sort(Comparator.comparingDouble(student -> student.score));// надо разобраться как это работает
-            //System.out.println(students.size());
             if (students.size() - N > 0) {
                 int k = 0;
                 for (Student student : students) {
@@ -27,7 +26,6 @@ public class Solution {
                         k++;
                     }
                     else{
-                        System.out.println(student.score + " " + N);
                         result.add(student);
                     }
                 }

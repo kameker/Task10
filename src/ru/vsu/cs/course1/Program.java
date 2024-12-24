@@ -5,6 +5,7 @@ import ru.vsu.cs.util.ArrayUtils;
 import ru.vsu.cs.util.SwingUtils;
 
 import java.io.PrintStream;
+import java.util.List;
 import java.util.Locale;
 
 
@@ -55,28 +56,21 @@ public class Program {
         }
         if (cmdLine.hasOption("w")) {
             winMain();
-        } else {
-            if (!cmdLine.hasOption("i") ||
-                !cmdLine.hasOption("r") && !cmdLine.hasOption("c")) {
-                new HelpFormatter().printHelp(PROGRAM_NAME_IN_HELP, cmdLineOptions);
-                System.exit(1);
-            }
+        } else if(cmdLine.hasOption("i")) {
             String inputFilename = cmdLine.getOptionValue("i");
-            int[][] arr2 = ArrayUtils.readIntArray2FromFile(inputFilename);
-            if (arr2 == null) {
-                System.err.printf("Can't read array from \"%s\"%n", inputFilename);
-                System.exit(2);
+            List<Student> students = Solution.solution(ConsoleStudents.fileToList(inputFilename),3,3);
+            if (!(cmdLine.hasOption("o"))) {
+                for (Student student : students) {
+                    System.out.println(student.toString());
+                }
             }
-            if (cmdLine.hasOption("r")) {
-                Task.reverseRows(arr2);
+            if (cmdLine.hasOption("o")){
+                PrintStream out = System.out;
+                for(Student student : students) {
+                    out.println(student.toString());
+                }
+                out.close();
             }
-            if (cmdLine.hasOption("c")) {
-                Task.reverseColumns(arr2);
-            }
-
-            PrintStream out = (cmdLine.hasOption("o")) ? new PrintStream(cmdLine.getOptionValue("o")) : System.out;
-            out.println(ArrayUtils.toString(arr2));
-            out.close();
         }
     }
 }
