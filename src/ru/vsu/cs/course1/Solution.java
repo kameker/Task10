@@ -22,7 +22,7 @@ public class Solution {
             if (students.size() - N > 0) {
                 int k = 0;
                 for (Student student : students) {
-                    if ((student.score < X && k < N) || (student.score >= X && k >= N)) {
+                    if ((student.score < X && k < N)) {
                         k++;
                     }
                     else{
@@ -33,6 +33,7 @@ public class Solution {
             }
             else continue;
         }
+        result.sort(Comparator.comparingDouble(student -> student.score));
         return result;
     }
 }

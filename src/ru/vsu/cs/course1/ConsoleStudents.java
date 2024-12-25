@@ -25,16 +25,16 @@ public class ConsoleStudents {
 
             switch (col) {
                 case 1:
-                    course1.addStudent(new Student(name, surname, patronymic, score, sex));
+                    course1.addStudent(new Student(name, surname, patronymic, score, sex,col));
                     break;
                 case 2:
-                    course2.addStudent(new Student(name, surname, patronymic, score, sex));
+                    course2.addStudent(new Student(name, surname, patronymic, score, sex,col));
                     break;
                 case 3:
-                    course3.addStudent(new Student(name, surname, patronymic, score, sex));
+                    course3.addStudent(new Student(name, surname, patronymic, score, sex,col));
                     break;
                 case 4:
-                    course4.addStudent(new Student(name, surname, patronymic, score, sex));
+                    course4.addStudent(new Student(name, surname, patronymic, score, sex,col));
                     break;
             }
         }

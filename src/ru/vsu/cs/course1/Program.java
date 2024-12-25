@@ -59,13 +59,12 @@ public class Program {
         } else if(cmdLine.hasOption("i")) {
             String inputFilename = cmdLine.getOptionValue("i");
             List<Student> students = Solution.solution(ConsoleStudents.fileToList(inputFilename),3,3);
-            if (!(cmdLine.hasOption("o"))) {
-                for (Student student : students) {
-                    System.out.println(student.toString());
-                }
+            for (Student student : students) {
+                System.out.println(student.toString());
             }
+
             if (cmdLine.hasOption("o")){
-                PrintStream out = System.out;
+                PrintStream out = new PrintStream(cmdLine.getOptionValue("o"));
                 for(Student student : students) {
                     out.println(student.toString());
                 }

@@ -67,14 +67,14 @@ public class FrameMain extends JFrame {
         SwingUtils.initLookAndFeelMenu(menuLookAndFeel);
 
         JTableUtils.writeArrayToJTable(tableInput, new String[][]{
-                {"Ivan1", "ivanov", "ivanovich", "man", "4.5", "1"},
-                {"Ivan2", "ivanov", "ivanovich", "man", "3.7", "1"},
-                {"Ivan3", "ivanov", "ivanovich", "man", "2.8", "1"},
-                {"Ivan4", "ivanov", "ivanovich", "man", "3.0", "1"},
-                {"Ivan5", "ivanov", "ivanovich", "man", "3.8", "2"},
-                {"Ivan6", "ivanov", "ivanovich", "man", "4.0", "2"},
-                {"Ivan7", "ivanov", "ivanovich", "man", "2.5", "2"},
-                {"Sony1", "ivanov", "ivanovich", "woman", "3.2", "2"}
+                {"Ivan1", "ivanov", "ivanovich", "4.5", "man", "1"},
+                {"Ivan2", "ivanov", "ivanovich", "3.7", "man", "1"},
+                {"Ivan3", "ivanov", "ivanovich", "2.8", "man", "1"},
+                {"Ivan4", "ivanov", "ivanovich", "3.0", "man", "1"},
+                {"Ivan5", "ivanov", "ivanovich", "3.8", "man", "2"},
+                {"Ivan6", "ivanov", "ivanovich", "4.0", "man", "2"},
+                {"Ivan7", "ivanov", "ivanovich", "2.5", "man", "2"},
+                {"Sony1", "ivanov", "ivanovich", "3.2", "woman", "2"}
         });
         JTableUtils.writeArrayToJTable(outTable, new String[][]{
                 {"", "", "", "", "", ""},
@@ -119,22 +119,21 @@ public class FrameMain extends JFrame {
                         String name = tableInput.getValueAt(i, 0).toString();
                         String surname = tableInput.getValueAt(i, 1).toString();
                         String patronymic = tableInput.getValueAt(i, 2).toString();
-                        String sex = tableInput.getValueAt(i, 3).toString();
-                        double score = Double.parseDouble(tableInput.getValueAt(i, 4).toString());
+                        String sex = tableInput.getValueAt(i, 4).toString();
+                        double score = Double.parseDouble(tableInput.getValueAt(i, 3).toString());
                         int col = Integer.parseInt(tableInput.getValueAt(i, 5).toString());
-
                         switch (col) {
                             case 1:
-                                course1.addStudent(new Student(name, surname, patronymic, score, sex));
+                                course1.addStudent(new Student(name, surname, patronymic, score, sex, col));
                                 break;
                             case 2:
-                                course2.addStudent(new Student(name, surname, patronymic, score, sex));
+                                course2.addStudent(new Student(name, surname, patronymic, score, sex, col));
                                 break;
                             case 3:
-                                course3.addStudent(new Student(name, surname, patronymic, score, sex));
+                                course3.addStudent(new Student(name, surname, patronymic, score, sex, col));
                                 break;
                             case 4:
-                                course4.addStudent(new Student(name, surname, patronymic, score, sex));
+                                course4.addStudent(new Student(name, surname, patronymic, score, sex, col));
                                 break;
                         }
                     }
@@ -178,7 +177,7 @@ public class FrameMain extends JFrame {
      */
     private void $$$setupUI$$$() {
         panelMain = new JPanel();
-        panelMain.setLayout(new GridLayoutManager(5, 2, new Insets(10, 10, 10, 10), 10, 10));
+        panelMain.setLayout(new GridLayoutManager(6, 2, new Insets(10, 10, 10, 10), 10, 10));
         final JScrollPane scrollPane1 = new JScrollPane();
         scrollPane1.setVerticalScrollBarPolicy(21);
         panelMain.add(scrollPane1, new GridConstraints(1, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(-1, 200), null, 0, false));
@@ -212,7 +211,7 @@ public class FrameMain extends JFrame {
         panel1.add(label2, new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final JScrollPane scrollPane2 = new JScrollPane();
         scrollPane2.setVerticalScrollBarPolicy(21);
-        panelMain.add(scrollPane2, new GridConstraints(3, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(-1, 200), null, 0, false));
+        panelMain.add(scrollPane2, new GridConstraints(4, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(-1, 200), null, 0, false));
         aaa = new JScrollPane();
         aaa.setVerticalScrollBarPolicy(21);
         scrollPane2.setViewportView(aaa);
@@ -220,16 +219,20 @@ public class FrameMain extends JFrame {
         aaa.setViewportView(outTable);
         final JPanel panel2 = new JPanel();
         panel2.setLayout(new GridLayoutManager(1, 2, new Insets(0, 0, 0, 0), -1, -1));
-        panelMain.add(panel2, new GridConstraints(4, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
+        panelMain.add(panel2, new GridConstraints(5, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         buttonSaveOutputIntoFile = new JButton();
         buttonSaveOutputIntoFile.setText("Сохранить в файл");
         panel2.add(buttonSaveOutputIntoFile, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final Spacer spacer1 = new Spacer();
         panel2.add(spacer1, new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, 1, null, null, null, 0, false));
         final JLabel label3 = new JLabel();
-        label3.setText("                 Имя     Фамаилия      Отечство           Пол        Средний бал Номер курса");
+        label3.setText("               Фамаилия      Имя       Отечство     Средний бал      Пол    Номер курса");
         label3.setToolTipText("    ");
         panelMain.add(label3, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        final JLabel label4 = new JLabel();
+        label4.setText("  Фамаилия      Имя       Отечство     Средний бал      Пол    Номер курса");
+        label4.setToolTipText("    ");
+        panelMain.add(label4, new GridConstraints(3, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
     }
 
     /**
