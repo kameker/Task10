@@ -19,8 +19,8 @@ public class ConsoleStudents {
             String name = splitedMatrixResult[0];
             String surname = splitedMatrixResult[1];
             String patronymic = splitedMatrixResult[2];
-            String sex = splitedMatrixResult[3];
-            double score = Double.parseDouble(splitedMatrixResult[4]);
+            String sex = splitedMatrixResult[4];
+            double score = Double.parseDouble(splitedMatrixResult[3]);
             int col = Integer.parseInt(splitedMatrixResult[5]);
 
             switch (col) {

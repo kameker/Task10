@@ -1,8 +1,8 @@
-Ivan1 ivanov ivanovich man 4.5 1
-Ivan2 ivanov ivanovich man 3.7 1
-Ivan3 ivanov ivanovich man 2.8 1
-Ivan4 ivanov ivanovich man 3.0 1
-Ivan5 ivanov ivanovich man 3.8 2
-Ivan6 ivanov ivanovich man 4.0 2
-Ivan7 ivanov ivanovich man 2.5 2
-Sony1 ivanov ivanovich woman 3.2 2
+Ivan1 ivanov ivanovich 4.5 man 1
+Ivan2 ivanov ivanovich 3.7 man 1
+Ivan3 ivanov ivanovich 2.8 man 1
+Ivan4 ivanov ivanovich 3.0 man 1
+Ivan5 ivanov ivanovich 3.8 man 2
+Ivan6 ivanov ivanovich 4.0 man 2
+Ivan7 ivanov ivanovich 2.5 man 2
+Sony1 ivanov ivanovich 3.2 woman 2

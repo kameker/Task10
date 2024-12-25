@@ -25,7 +25,6 @@ public class FrameMain extends JFrame {
     private JTable tableInput;
     private JButton buttonLoadInputFromFile;
     private JButton buttonRandomInput;
-    private JButton buttonSaveOutputIntoFile;
     private JButton deleteButton;
     private JTextField xInput;
     private JTextField nInput;
@@ -85,8 +84,16 @@ public class FrameMain extends JFrame {
             public void actionPerformed(ActionEvent actionEvent) {
                 try {
                     if (fileChooserOpen.showOpenDialog(panelMain) == JFileChooser.APPROVE_OPTION) {
-                        int[][] arr = ArrayUtils.readIntArray2FromFile(fileChooserOpen.getSelectedFile().getPath());
-                        JTableUtils.writeArrayToJTable(tableInput, arr);
+
+                        String[] arr = ArrayUtils.readLinesFromFile(fileChooserOpen.getSelectedFile().getPath());
+                        String[][] aboba = new String[arr.length][6];
+                        int i = 0;
+                        System.out.println(2);
+                        for (String s : arr) {
+                            aboba[i] = s.split(" ");
+                            i++;
+                        }
+                        JTableUtils.writeArrayToJTable(tableInput, aboba);
                     }
                 } catch (Exception e) {
                     SwingUtils.showErrorMessageBox(e);
@@ -177,7 +184,7 @@ public class FrameMain extends JFrame {
      */
     private void $$$setupUI$$$() {
         panelMain = new JPanel();
-        panelMain.setLayout(new GridLayoutManager(6, 2, new Insets(10, 10, 10, 10), 10, 10));
+        panelMain.setLayout(new GridLayoutManager(5, 2, new Insets(10, 10, 10, 10), 10, 10));
         final JScrollPane scrollPane1 = new JScrollPane();
         scrollPane1.setVerticalScrollBarPolicy(21);
         panelMain.add(scrollPane1, new GridConstraints(1, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(-1, 200), null, 0, false));
@@ -217,14 +224,6 @@ public class FrameMain extends JFrame {
         scrollPane2.setViewportView(aaa);
         outTable = new JTable();
         aaa.setViewportView(outTable);
-        final JPanel panel2 = new JPanel();
-        panel2.setLayout(new GridLayoutManager(1, 2, new Insets(0, 0, 0, 0), -1, -1));
-        panelMain.add(panel2, new GridConstraints(5, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
-        buttonSaveOutputIntoFile = new JButton();
-        buttonSaveOutputIntoFile.setText("Сохранить в файл");
-        panel2.add(buttonSaveOutputIntoFile, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-        final Spacer spacer1 = new Spacer();
-        panel2.add(spacer1, new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, 1, null, null, null, 0, false));
         final JLabel label3 = new JLabel();
         label3.setText("               Фамаилия      Имя       Отечство     Средний бал      Пол    Номер курса");
         label3.setToolTipText("    ");

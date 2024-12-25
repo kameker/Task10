@@ -40,6 +40,8 @@ public class Program {
         cmdLineOptions.addOption("w", "window", false, "Use window user interface");
         cmdLineOptions.addOption("i", "input-file", true, "Input file");
         cmdLineOptions.addOption("o", "output-file", true, "Output file");
+        cmdLineOptions.addOption("n", "output-file", true, "N");
+        cmdLineOptions.addOption("x", "output-file", true, "X");
 
         CommandLineParser parser = new DefaultParser();
         CommandLine cmdLine = null;
@@ -58,7 +60,9 @@ public class Program {
             winMain();
         } else if(cmdLine.hasOption("i")) {
             String inputFilename = cmdLine.getOptionValue("i");
-            List<Student> students = Solution.solution(ConsoleStudents.fileToList(inputFilename),3,3);
+            int X = cmdLine.hasOption("x") ? Integer.parseInt(cmdLine.getOptionValue("x")):0;
+            int N = cmdLine.hasOption("n") ? Integer.parseInt(cmdLine.getOptionValue("n")):0;
+            List<Student> students = Solution.solution(ConsoleStudents.fileToList(inputFilename),N,X);
             for (Student student : students) {
                 System.out.println(student.toString());
             }
